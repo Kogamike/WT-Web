@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación Progresiva | Wizards of Tomorrow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    </head>
+ <body class="bg-cyber">
+
+    <div class="container-validacion">
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+            <div class="step-circle active" data-step="1">1</div>
+            <div class="step-circle" data-step="2">2</div>
+            <div class="step-circle" data-step="3">3</div>
+        </div>
+
+        <header class="validacion-header">
+            <h1 class="neon-title" id="step-title">MÉTODO DE PAGO</h1>
+            <p id="step-desc">Como te gustaria pagar</p>
+        </header>
+
+        <form id="form-arcano-progresivo">
+            
+            <div class="step-content active" id="step-1">
+                <div class="payment-options">
+
+                    <label class="payment-card">
+                        <input type="radio" name="payment" value="card" >
+                        <div class="payment-content">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <span>Tarjeta de Crédito/debito</span>
+                        </div>
+                    </label>
+                    <label class="payment-card">
+                        <input type="radio" name="payment" value="paypal">
+                        <div class="payment-content">
+                            <i class="fa-solid fa-wallet"></i>
+                            <span>Billeteras Digitalees</span>  
+                        </div>
+                    </label>
+                </div>
+                <div id="payment-extra"></div>
+
+                    <button type="button" class="btn-next-final">
+                        CONTINUAR
+                    </button>
+
+            </div>
+
+            <div class="step-content" id="step-2">
+                <div class="details-grid">
+                    <div class="input-group">
+                        <label>Pais</label>
+                        <input type="text" id="pais" placeholder="Estados Unidos">
+                    </div>
+                    <div class="input-group">
+                        <label>Ciudad</label>
+                        <input type="text" id="ciudad" placeholder="Neo-Tokio">
+                    </div>
+                    <div class="input-group">
+                        <label>Dirección de Entrega</label>
+                        <input type="text" id="direccion" placeholder="Ej: Distrito Central, Torre 7">
+                    </div>
+                </div>
+                    <button type="button" class="btn-next-final">
+                        CONTINUAR
+                    </button>
+            </div>
+
+            <div class="step-content" id="step-3">
+                <p class="info-text">Casi listo. Necesitamos un lugar de envio.</p>
+                <div class="details-grid">
+                    <div class="input-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" id="email-contacto" placeholder="mago@ejemplo.com">
+                    </div>
+                    <h3 class="final-h3">o</h3>
+                    <div class="input-group">
+                        <label>Teléfono</label>
+                        <input type="tel" id="tel-contacto" placeholder="+00 000 0000">
+                    </div>
+                </div>
+                <div class="final-checkout-info">
+                    <p>Total a pagar: <span id="monto-final">$0.00</span></p>
+
+                    <div id="payment-extra"></div> 
+                        <button type="button" class="btn-pay-final" onclick="procesarPagoFinal()">
+                            Finalizar Compra <i class="fa-solid fa-vault"></i>
+                        </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="menu2.js"></script>
+</body>
+</html>

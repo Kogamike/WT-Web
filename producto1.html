@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WT – Wizards of Tomorrow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagenes/Logo 2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+<body>
+
+    <header class="header">
+        <div class="container logo-nav-container">
+
+
+        <div class="header-spacer"></div>
+
+        <a href="index.html" class="logo"> 
+            <img src="imagenes/Logo Principal 2.png" alt="Logo WT">
+        </a>
+
+        <button class="menu-toggle" id="menu-open">
+            <div class="hamburger-lines">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </button>
+
+
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">INICIO</a></li>
+                    <li><a href="Acerca.html">ACERCA</a></li>
+                    <li><a href="contactanos.html">CONTÁCTANOS</a></li>
+
+                   <li class="user-item">
+                    <div id="logged-out-view" class="user-view">
+                        <a href="#" class="login-icon btn-open-login">
+                            <i class="fa-regular fa-circle-user"></i>
+                        </a>
+                    </div>
+
+                    <div id="logged-in-view" class="user-view" style="display: none;">
+                        <div class="user-profile" id="userProfileBtn">
+                            <img src="imagenes/Avatar.png" alt="Avatar" class="user-avatar">
+                            <span class="user-name" style="color: #39FF14; font-family: 'Geist', sans-serif;">Mago_WT</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="confi.html"><i class="fa-solid fa-gear"></i> Configuración</a>
+                            <a href="listwish.html" id="openWishlist"><i class="fa-solid fa-heart"></i> Lista de deseos</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                        </div>
+                    </div>
+</li>
+
+                    <li>
+                        <a href="carrito.html" class="cart-link">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="search-item">
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Buscar...">
+                            <a href="javascript:void(0)" class="search-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </div>
+                            <div id="search-results" class="search-results-dropdown"></div>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <span class="icon-close"><i class="fa-solid fa-x"></i></span>
+
+        <div class="form-box login">
+            <h2>LOGIN</h2>
+            <form action="#">
+                <div class="input-box input-correo-fix">
+                    <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                    <input type="email" required placeholder=" "> 
+                    <label>Correo Electrónico</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Recuerdame</label>
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn">Ingresar</button>
+                <div class="login-register">
+                    <p>No te has registrado aún?<a href="login.html">Registrarse</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3>TU CARRITO</h3>
+        <span class="close-cart"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <div class="cart-items">
+        <p class="empty-msg">Tu carrito es vacio.</p>
+    </div>
+
+    <div class="cart-footer">
+        <div class="total-container">
+            <span>Total:</span>
+            <span class="total-price">$0.00</span>
+        </div>
+        <button class="btn-pay" id="btn-pago-final">PROCEDER AL PAGO</button>
+    </div>
+</div>
+    
+    <main class="product-page">
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">INICIO</a> / <a href="catalogo.html">CATÁLOGO</a> / <span>ESTER ESPÓSITO</span>
+        </nav>
+
+        <div class="product-grid"> 
+            <div class="product-left-side">
+                <div class="gallery-wrapper">
+                    <div class="thumbnails-container">
+                            <div class="thumb-item"><img src="imagenes/ester.webp" class="thumb active" onclick="changeImage(this.src, this)"></div>
+                            <div class="thumb-item"><img src="imagenes/mbappe.jpg" class="thumb" onclick="changeImage(this.src, this)"></div>
+                            <div class="thumb-item"><img src="imagenes/el bicho.webp" class="thumb" onclick="changeImage(this.src, this)"></div>
+                            <div class="thumb-item"><img src="imagenes/Olsen.jpg" class="thumb" onclick="changeImage(this.src, this)"></div>
+                            <div class="thumb-item"><img src="imagenes/Cavill.webp" class="thumb" onclick="changeImage(this.src, this)"></div>
+                            <div class="thumb-item"><img src="imagenes/Taylor.jpg" class="thumb" onclick="changeImage(this.src, this)"></div>
+                    </div>
+
+                    <div class="main-image-container">
+                         <img src="imagenes/ester.webp" id="current-main-img" alt="Producto Principal" onclick="openLightbox()">
+                    </div>
+                </div>
+
+<div class="product-accordion">   
+    <div class="accordion-item active"> <div class="accordion-header">
+            <h3>DESCRIPCIÓN</h3>
+            <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="accordion-content">
+            <p>Edición limitada Wizards of Tomorrow. Material de alta resistencia con acabado neón. Diseñado para ofrecer máxima comodidad y un estilo futurista inigualable.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <h3>ESPECIFICACIONES</h3>
+            <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="accordion-content">
+            <p>• Composición: 100% Polímero Reforzado.<br>
+               • Peso: 150g (Ultraligero).<br>
+               • Color: Deep Black con detalles en Ultravioleta.<br>
+               • Compatibilidad: Ecosistema Wizard 2.0.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <h3>ENVÍO Y DEVOLUCIONES</h3>
+            <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="accordion-content">
+            <p>Envío gratuito a todo el mundo en pedidos superiores a $150. Devoluciones disponibles dentro de los primeros 30 días posteriores a la entrega.</p>
+        </div>
+    </div>
+</div>
+
+<section class="wizard-complementary-look">
+    <div class="complementary-header">
+        <h2 class="complementary-title">TAMBIEN PUEDES COMPRAR</h2>
+        <div class="complementary-line"></div>
+    </div>
+
+    <div class="look-split-wrapper">
+        <div class="look-left-column">
+            <div class="look-grid-selection">
+                
+                <div class="recomend-card" data-price="3.99">
+                    <div class="container-recomend-img">
+                        <img src="imagenes/Chapa.jpg" alt="Chapa WT">
+                        <div class="button-group-rec">
+                            <span class="wishlist-btn"><i class="fa-regular fa-heart"></i></span>
+                            <span class="share-btn"><i class="fa-solid fa-share-nodes"></i></span>
+                        </div>
+                    </div>
+                    <div class="container-recomend-content" data-id="1" data-name="Chapa WT" data-price="3.99" data-url="producto1.html" >
+                        <p class="price">$3.99</p>
+                        <h3>Chapa WT</h3>
+                        <p class="category">Hogar</p>
+                        <span class="add-cart-btn"><i class="fa-solid fa-basket-shopping"></i></span>
+                    </div>
+                </div>
+
+                <div class="recomend-card" data-id="3" data-name="Asistente Virtual" data-price="0.99" data-url="producto3.html">
+                    <div class="container-recomend-img">
+                        <span class="discount-badge">-75%</span>
+                        <img src="imagenes/Alexa.jpg" alt="Asistente WT">
+                            <div class="button-group-rec">
+                                <span class="wishlist-btn"><i class="fa-regular fa-heart"></i></span>
+                                <span class="share-btn"><i class="fa-solid fa-share-nodes"></i></span>
+                            </div>
+                    </div>
+                    <div class="container-recomend-content">
+                        <p class="price">$0.99<span>$3.99</span></p>
+                        <h3>Asistente WT</h3>
+                        <p class="category">Tecnología</p>
+                        <span class="add-cart-btn"><i class="fa-solid fa-basket-shopping"></i></span>
+                    </div>
+                </div>
+
+                <div class="recomend-card" data-id="2" data-name="Luces WT" data-price="1.99" data-url="producto3.html">
+                    <div class="container-recomend-img">
+                        <span class="discount-badge">-50%</span>
+                        <img src="imagenes/Luces2.jpg" alt="Luces WT">
+                            <div class="button-group-rec">
+                                <span class="wishlist-btn"><i class="fa-regular fa-heart"></i></span>
+                                <span class="share-btn"><i class="fa-solid fa-share-nodes"></i></span>
+                            </div>
+                    </div>
+                    <div class="container-recomend-content">
+                        <p class="price">$1.99<span>$3.99</span></p>
+                        <h3>LUCES WT</h3>
+                        <p class="category">Hogar</p>
+                        <span class="add-cart-btn"><i class="fa-solid fa-basket-shopping"></i></span>
+                    </div>
+                </div>
+
+                <div class="recomend-card" data-id="5" data-name="Camara WT" data-price="1.99" data-url="producto5.html">
+                    <div class="container-recomend-img">
+                        <span class="discount-badge">-50%</span>
+                        <img src="imagenes/Cam.jpg" alt="Camara">
+                            <div class="button-group-rec">
+                                <span class="wishlist-btn"><i class="fa-regular fa-heart"></i></span>
+                                <span class="share-btn"><i class="fa-solid fa-share-nodes"></i></span>
+                            </div>
+                    </div>
+                    <div class="container-recomend-content">
+                        <p class="price">$1.99<span>$3.99</span></p>
+                        <h3>Camara WT</h3>
+                        <p class="category">Hogar</p>
+                        <span class="add-cart-btn"><i class="fa-solid fa-basket-shopping"></i></span>
+                    </div>
+                </div>
+
+            </div> 
+            
+            <div class="view-more-container">
+                <a href="catalogo.html" class="btn-show-more">
+                    VER CATÁLOGO COMPLETO <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+   </div>
+</section>
+
+            <div class="product-right-side">
+                <div class="sticky-info container-product-info" data-id="1" data-name="Chapa WT" data-price="3.99">
+                    <span class="product-tag">EDICIÓN WT-2026</span>
+                    <h1 class="product-title">ESTER ESPÓSITO</h1>
+                    <p class="product-price">$9.99</p>
+                    
+                    <div class="product-divider"></div>
+
+                    <div class="purchase-actions">
+                        <div class="qty-selector">
+                            <button class="qty-btn-m" type="button">-</button>
+                            <input type="number" value="1" id="main-qty" readonly>
+                            <button class="qty-btn-+" type="button">+</button>
+                        </div>
+                        <button class="btn-buy">
+                            AÑADIR AL CARRITO 
+                        </button>
+                    </div>
+
+                    <div class="trust-info">
+                        <p><i class="fa-solid fa-truck-fast"></i> Envío Express Wizard</p>
+                        <p><i class="fa-solid fa-shield-check"></i> Garantía WT de 60 días</p>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </div>
+
+
+
+</main>
+
+    <div id="product-lightbox" class="lightbox">
+    <span class="close-lightbox"><i class="fa-solid fa-xmark"></i></span>
+    
+    <div class="lightbox-main-content">
+        <button class="lb-arrow prev-lb"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="lb-arrow next-lb"><i class="fa-solid fa-chevron-right"></i></button>
+        <img src="" id="lightbox-img" alt="Vista Detallada">
+    </div>
+
+    <div class="lightbox-thumbnails"></div>
+</div>
+
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Wizards of Tomorrow. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="menu2.js"></script>
+</body>
+</html>

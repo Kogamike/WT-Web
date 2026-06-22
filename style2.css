@@ -1,0 +1,564 @@
+/* ==========================================
+   WIZARDS OF TOMORROW - CORE STYLES
+   ========================================== */
+:root {
+    --neon-green: #39FF14;
+    --electric-blue: #00F3FF;
+    --bg-black: #0d0d0d;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: white;
+    font-family: 'Geist', sans-serif;
+    margin: 0;
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+/* GRID PRINCIPAL */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 0;
+    align-items: flex-start;
+    padding: 40px 0;
+}
+
+.product-info {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 60px;
+    position: sticky;
+    top: 40px;
+}
+
+/* GALERÍA DE IMÁGENES */
+.gallery-wrapper {
+    display: flex; 
+    gap: 20px; 
+}
+
+.thumbnails { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+.thumb { 
+    width: 80px !important; 
+    height: 80px !important; 
+    object-fit: cover !important; 
+    background: #fff; 
+    border: 1px solid #333; 
+    cursor: pointer; transition: 0.3s;
+}
+
+.thumb.active { 
+    border-color: var(--neon-green) !important; 
+}
+
+.main-viewer {
+    width: 100%; 
+    aspect-ratio: 1 / 1;
+    background: #fff; 
+    cursor: pointer;
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+#main-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+
+/* SELECTOR DE CANTIDAD */
+.qty-selector {
+    display: flex; 
+    align-items: center; 
+    background: #222;
+    border: 1px solid #444; 
+    width: fit-content; 
+    margin-bottom: 20px;
+}
+
+.qty-btn { 
+    background: none; 
+    border: none; 
+    color: white; 
+    padding: 10px 15px; 
+    cursor: pointer; 
+    font-size: 1.2rem; 
+}
+
+#qty-input {
+    width: 50px; 
+    text-align: center; 
+    background: none; 
+    border: none; 
+    color: white; 
+    font-weight: bold;
+}
+
+/* LIGHTBOX (ESTILO ADIDAS) */
+.lightbox {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: #f4f4f4; 
+    display: none; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    z-index: 10000;
+}
+
+.lb-content {
+    width: 90vw; 
+    height: 70vh; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    position: relative;
+    cursor: zoom-in;
+}
+
+#lightbox-img { 
+    /* 1. Forzamos el marco cuadrado a morir */
+    width: 600px !important; 
+    height: 600px !important; 
+    aspect-ratio: 1 / 1 !important;
+
+    /* 2. Forzamos que la imagen rellene ese marco */
+    object-fit: cover !important; 
+    object-position: center;
+
+    /* 3. El lienzo blanco de fondo */
+    background-color: #fff !important; 
+
+    /* 4. Estética */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.2s ease-out; /* Suavidad al entrar/salir del zoom */
+    transform-origin: center; /* Por defecto inicia en el centro */
+    user-select: none; /* Evita que se seleccione la imagen al clickear */
+    pointer-events: none; /
+}
+
+.lb-thumbnails-footer {
+    display: flex; 
+    gap: 10px; 
+    margin-top: 30px;
+}
+
+.lb-thumb-item {
+    width: 60px; 
+    height: 60px; 
+    object-fit: cover;
+    background: #fff; 
+    cursor: pointer; 
+    border: 2px solid transparent;
+}
+
+.lb-thumb-item.active-lb { 
+    border-color: #000;
+ }
+
+/* Cuando el modo zoom está activo */
+.lb-content.is-zoomed {
+    cursor: zoom-out;
+}
+
+.lb-content.zoomed #lightbox-img {
+    transform: scale(2.5); /* Nivel de zoom (puedes subirlo a 3 si quieres más detalle) */
+}
+
+/* NAVEGACIÓN */
+.close-lb { 
+    position: absolute; 
+    top: 20px; 
+    right: 30px; 
+    font-size: 3rem; 
+    color: #000; 
+    cursor: pointer;
+ }
+
+.lb-nav { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: none; 
+    border: none; 
+    font-size: 2.5rem; 
+    color: #000; 
+    cursor: pointer; 
+    padding: 20px;
+ }
+
+.prev { 
+    left: 5%;
+ }
+
+.next { 
+    right: 5%;
+ }
+
+ /* --- ESTILOS DE ZOOM PROFESIONAL --- */
+
+
+/* Cuando el modo zoom está activo */
+.lb-content.is-zoomed {
+    cursor: zoom-out;
+}
+
+.lb-content.is-zoomed #lightbox-img {
+    transform: scale(2.5); /* Nivel de detalle */
+}
+
+/* --- LADO DERECHO: INFO DEL PRODUCTO --- */
+
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-size: 3.5rem; /* Talla grande tipo cartel */
+    font-family: 'Clash Grotesk', sans-serif; /* Tu fuente preferida */
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    line-height: 0.9;
+}
+
+.product-price {
+    font-size: 2rem;
+    color: var(--electric-blue);
+    font-family: 'Geist', sans-serif;
+    margin: 20px 0;
+}
+
+.product-divider {
+    height: 1px;
+    background: linear-gradient(to right, var(--neon-green), transparent);
+    margin: 30px 0;
+}
+
+.product-description h3, .product-variants h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--neon-green);
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+/* Variantes Estilo Tecnológico */
+.variant-options { display: flex; gap: 10px; margin-bottom: 30px; }
+.v-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Geist', sans-serif;
+}
+.v-btn.active, .v-btn:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    background: rgba(57, 255, 20, 0.05);
+}
+
+/* Acciones y Botón */
+.qty-wrapper .label { display: block; font-size: 0.8rem; margin-bottom: 8px; color: #888; }
+
+.btn-buy {
+    width: 100%;
+    background: var(--neon-green);
+    color: #000;
+    border: none;
+    padding: 20px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 10px;
+}
+
+.btn-buy:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(57, 255, 20, 0.3);
+}
+
+.trust-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #222;
+    padding-top: 20px;
+}
+
+.badge { font-size: 0.8rem; color: #888; display: flex; align-items: center; gap: 10px; }
+.badge i { color: var(--electric-blue); }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px; /* Columna izquierda flexible, derecha fija */
+    gap: 60px;
+    align-items: flex-start; /* IMPORTANTE: para que el sticky funcione */
+}
+
+/* Columna izquierda: Crece según el contenido */
+.product-left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Columna derecha: El contenedor padre debe ocupar todo el alto */
+.product-right-side {
+    height: 100%;
+}
+
+/* La caja mágica que se queda fija */
+.sticky-info {
+    position: sticky;
+    top: 40px; /* Distancia desde el borde superior de la pantalla */
+    padding: 20px 0;
+}
+
+/* Estilo para los acordeones (Lado izquierdo) */
+.accordion-item {
+    border-top: 1px solid #333;
+    padding: 20px 0;
+}
+
+.accordion-item h3 {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--neon-green);
+    font-family: 'Clash Grotesk', sans-serif;
+}
+
+.accordion-item .content {
+    margin-top: 15px;
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- SECCIÓN RECOMENDADOS --- */
+.related-products {
+    margin-top: 100px;
+    padding-top: 50px;
+    border-top: 1px solid #222;
+}
+
+.section-title {
+    font-family: 'Clash Grotesk', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Tarjeta de Producto */
+.product-card {
+    background: transparent;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card-img-wrapper {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #222;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Botón de añadir rápido al estilo neón */
+.quick-add {
+    position: absolute;
+    bottom: -50px; /* Escondido al inicio */
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: var(--neon-green);
+    border: none;
+    color: #000;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Hover Effects */
+.product-card:hover .card-img-wrapper img {
+    transform: scale(1.1);
+}
+
+.product-card:hover .quick-add {
+    bottom: 0;
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1); /* Brillo Azul Eléctrico muy sutil */
+}
+
+.card-info {
+    margin-top: 15px;
+}
+
+.card-info h4 {
+    font-size: 0.9rem;
+    color: #fff;
+    margin: 0;
+    font-family: 'Geist', sans-serif;
+}
+
+.card-price {
+    color: var(--electric-blue);
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* --- SECCIÓN RECOMENDADOS (SLIDER HORIZONTAL) --- */
+.related-products {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #222;
+    width: 100%;
+    overflow: hidden; /* Evita que el slider se salga del contenedor padre */
+}
+
+.recommendations-grid {
+    display: flex; /* Alineación en línea */
+    gap: 20px;
+    overflow-x: auto; /* Habilita scroll horizontal */
+    padding-bottom: 25px; /* Espacio para la barra de scroll */
+    scroll-snap-type: x mandatory; /* Hace que las tarjetas se "imanten" al deslizar */
+    scrollbar-width: thin; /* Para Firefox */
+}
+
+/* --- TARJETA DE PRODUCTO --- */
+.product-card {
+    flex: 0 0 280px; /* CLAVE: No permite que la tarjeta se encoja (0) ni crezca (0) y fija el ancho en 280px */
+    scroll-snap-align: start; /* Complemento del imán */
+    transition: transform 0.3s ease;
+}
+
+.card-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Mantiene el cuadrado perfecto */
+    background: #fff;
+    overflow: hidden;
+    border: 1px solid #222;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* CLAVE: La imagen rellena el cuadro sin estirarse */
+    display: block;
+}
+
+/* --- BARRA DE SCROLL NEÓN --- */
+/* Contenedor del slider para que la barra no esté pegada a las fotos */
+.recommendations-grid {
+    padding-bottom: 30px; /* Más espacio para que luzca el brillo */
+}
+
+/* 1. Tamaño de la barra */
+.recommendations-grid::-webkit-scrollbar {
+    height: 4px; /* Más delgada = más elegante */
+    transition: all 0.3s ease;
+}
+
+/* 2. El "riel" o fondo de la barra */
+.recommendations-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); /* Un gris casi invisible */
+    border-radius: 20px;
+    margin: 0 80px; /* Hace que la barra sea más corta que el contenido, queda de lujo */
+}
+
+/* 3. El indicador (la parte que se mueve) */
+.recommendations-grid::-webkit-scrollbar-thumb {
+    background: var(--electric-blue);
+    border-radius: 20px;
+    /* Resplandor neón azul */
+    box-shadow: 0 0 8px var(--electric-blue), 
+                0 0 15px rgba(0, 243, 255, 0.5);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Un pequeño borde para definirlo */
+}
+
+/* 4. Estado Hover (Cuando pasas el mouse o arrastras) */
+.recommendations-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-green);
+    /* Cambio de resplandor a verde neón */
+    box-shadow: 0 0 12px var(--neon-green), 
+                0 0 20px rgba(57, 255, 20, 0.6);
+    height: 6px; /* Efecto de que se agranda al tocarla */
+}
+
+/* Para Firefox (que no usa webkit) */
+.recommendations-grid {
+    scrollbar-width: thin;
+    scrollbar-color: var(--electric-blue) transparent;
+}
+
+.btn-buy {
+    display: flex;
+    justify-content: space-between; /* El texto a la izquierda, el precio a la derecha */
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.btn-buy span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    background: rgba(0,0,0,0.1);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* viejooooo */
+
+

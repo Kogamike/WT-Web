@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WT – Wizards of Tomorrow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagenes/Logo 2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+<body>
+
+    <header class="header">
+        <div class="container logo-nav-container">
+
+
+        <div class="header-spacer"></div>
+
+        <a href="index.html" class="logo"> 
+            <img src="imagenes/Logo Principal 2.png" alt="Logo WT">
+        </a>
+
+        <button class="menu-toggle" id="menu-open">
+            <div class="hamburger-lines">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </button>
+
+
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">INICIO</a></li>
+                    <li><a href="Acerca.html">ACERCA</a></li>
+                    <li><a href="contactanos.html">CONTÁCTANOS</a></li>
+
+                   <li class="user-item">
+                    <div id="logged-out-view" class="user-view">
+                        <a href="#" class="login-icon btn-open-login">
+                            <i class="fa-regular fa-circle-user"></i>
+                        </a>
+                    </div>
+
+                    <div id="logged-in-view" class="user-view" style="display: none;">
+                        <div class="user-profile" id="userProfileBtn">
+                            <img src="imagenes/Avatar.png" alt="Avatar" class="user-avatar">
+                            <span class="user-name" style="color: #39FF14; font-family: 'Geist', sans-serif;">Mago_WT</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="confi.html"><i class="fa-solid fa-gear"></i> Configuración</a>
+                            <a href="listwish.html" id="openWishlist"><i class="fa-solid fa-heart"></i> Lista de deseos</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
+                        </div>
+                    </div>
+</li>
+
+                    <li>
+                        <a href="carrito.html" class="cart-link">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="search-item">
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Buscar...">
+                            <a href="javascript:void(0)" class="search-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </div>
+                            <div id="search-results" class="search-results-dropdown"></div>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <span class="icon-close"><i class="fa-solid fa-x"></i></span>
+
+        <div class="form-box login">
+            <h2>LOGIN</h2>
+            <form action="#">
+                <div class="input-box input-correo-fix">
+                    <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                    <input type="email" required placeholder=" "> 
+                    <label>Correo Electrónico</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Recuerdame</label>
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn">Ingresar</button>
+                <div class="login-register">
+                    <p>No te has registrado aún?<a href="login.html">Registrarse</a></p>
+                </div>
+                <!-- Dentro de tu <div class="form-box login"> -->
+                <div class="social-login-separator">
+                    <span>o ingresa con</span>
+                </div>
+
+                <div class="social-icons-container">
+                    <a href="#" class="social-icon google"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="social-icon facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h3>TU CARRITO</h3>
+        <span class="close-cart"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <div class="cart-items">
+        <p class="empty-msg">Tu carrito es vacio.</p>
+    </div>
+
+    <div class="cart-footer">
+        <div class="total-container">
+            <span>Total:</span>
+            <span class="total-price">$0.00</span>
+        </div>
+        <button class="btn-pay" id="btn-pago-final">PROCEDER AL PAGO</button>
+    </div>
+</div>
+
+
+    <section id="wishlist-grid" class="wishlist-grid">
+        <div class="wishlist-empty" id="empty-msg">
+            <i class="fa-solid fa-box-open"></i>
+            <h3>Tu lista de deseos esta vacia</h3>
+            <p>Explora la tienda y marca objetos con el corazón para verlos aquí.</p>
+            <a href="index.html" class="btn-back-shop">Volver a la Tienda</a>
+        </div>
+
+        </section>
+</main>
+
+<div id="sidebar-overlay" class="sidebar-overlay"></div>
+     
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Wizards of Tomorrow. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="menu2.js"></script>
+
+</body>
+</html>
