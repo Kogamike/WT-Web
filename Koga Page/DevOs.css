@@ -1,0 +1,900 @@
+:root {
+    /* --- Tono 1: Fondo general profundo (Aplica para Hero, Vitrina y FAQs) --- */
+    --bg-base: #030712;       
+
+    /* --- Tono 2: Primer nivel de elevación (Aplica para la Sección de Servicios / Carrusel) --- */
+    --bg-section-1: #080E21;  
+
+    /* --- Tono 3: Segundo nivel de elevación (Aplica para la Sección de Confianza / "Quiénes somos") --- */
+    --bg-section-2: #0E1736;  
+
+    /* --- Tono 4: Color para tarjetas, botones flotantes y contenedores internos --- */
+    --bg-card: #15224A;       
+
+    /* --- Tono 5: Color de acento para estados activos o bordes destacados --- */
+    --bg-highlight: #1D3066;  
+
+    /* --- Tono 6: Negro puro exclusivo (Aplica únicamente para el Footer de cierre) --- */
+    --bg-footer: #000000;     
+    
+    /* --- Extras de marca --- */
+    --neon-green: #5eff00;    /* Verde neón tecnológico para acentos y CTAs */
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+}
+
+body{
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.header-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+}
+
+.header-dev-page{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background: regba(3, 7, 18, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-space{
+    width: 90px;
+}
+
+.logo-header img {
+    width: 60px; /* Ajustado para que luzca elegante en la barra superior */
+    height: auto;
+    display: block;
+}
+
+.btn-contacto {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-contacto:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+}
+
+/* --- Estilos de la Hero Section (Sección 2) --- */
+.hero-section {
+    position: relative;
+    overflow: hidden; /* Evita que las luces se salgan de la pantalla */
+    background-color: var(--bg-base); 
+    padding: 10rem 2rem 6rem; /* Espacio superior para que el header fijo no tape el texto */
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor absoluto de las luces de fondo */
+.hero-glow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Para que las luces no bloqueen ningún clic */
+    z-index: 1;
+}
+
+/* Las manchas de luz difuminadas */
+.glow-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px); /* El truco mágico del desenfoque masivo */
+}
+
+.glow-blue {
+    width: 450px;
+    height: 450px;
+    background-color: #3b82f6; /* Azul brillante tecnológico */
+    top: 10%;
+    left: 10%;
+    opacity: 0.12; /* Sutil para no deslumbrar */
+}
+
+.glow-green {
+    width: 380px;
+    height: 380px;
+    background-color: var(--neon-green); /* Tu verde neón #10b981 */
+    bottom: 5%;
+    right: 10%;
+    opacity: 0.1; /* Acento secundario */
+}
+
+/* Asegurar que el texto esté siempre por encima de las luces */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* =============================
+    SECCIÓN 3(Servicios)
+   ================================*/
+.services-wrapper {
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-3 {
+    color: #ffffff;
+    font-size: clamp(2rem, 3vw, 2.8rem); /* Escala suavemente según la pantalla */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;                /* Espacio de separación con el carrusel */
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   1. CONTENEDOR GENERAL Y PISTA (TRACK)
+   ================================---------- */
+.slider-pag-3 {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.container-pag-3-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+
+/* ==========================================
+   2. ESTILOS DE LAS TARJETAS (INACTIVAS VS ACTIVA)
+   ================================---------- */
+
+/* Tarjetas laterales (Inactivas): Compactas, solo muestran la imagen */
+.service-card {
+    flex: 0 0 auto;
+    width: 260px;               /* Ancho fijo pequeño */
+    height: 240px;              /* Alto fijo pequeño (solo para la imagen) */
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 12px;
+    opacity: 0.5;               
+    transform: scale(0.75);     /* <--- Las de los lados se encogen visualmente un 25% */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.5s ease, 
+                border-color 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;           /* Oculta cualquier texto o contenido extra */
+}
+
+/* Tarjeta ACTIVA (Centro): Usamos 'width' fijo para que la transición sea suave */
+.service-card.active {
+    width: 440px;               /* <--- Cambiado de min-width a width para animar suavemente */
+    min-height: 500px;          /* El min-height sí está bien para que crezca si el texto es largo */
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.4);
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(1);
+}
+
+/* ==========================================
+   3. IMÁGENES Y TEXTOS
+   ================================---------- */
+.service-card img {
+    width: 100%;
+    height: 100%;               /* Ocupa todo el espacio de la tarjeta pequeña */
+    object-fit: cover;
+    border-radius: 8px;
+    transition: height 0.5s ease, margin 0.5s ease;
+}
+
+/* Cuando está activa, la imagen ocupa la mitad superior */
+.service-card.active img {
+    height: 50%;
+    margin-bottom: 15px;
+}
+
+/* Textos totalmente ocultos en las tarjetas inactivas */
+.service-card .title-pag-3,
+.service-card .text-pag-3 {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+/* Textos visibles fluidamente solo en la tarjeta activa */
+.service-card.active .title-pag-3 {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.service-card.active .text-pag-3 {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+    color: #ffffff;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    opacity: 0.85;
+    margin: 0;
+}
+
+
+/* ==========================================
+   4. BOTONES DE NAVEGACIÓN (FLECHAS)
+   ================================---------- */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+}
+
+.btn-prev { left: 10px; }
+.btn-next { right: 10px; }
+
+/* --- 
+Estilos de la Vitrina de Prototipos (Parte 4)
+========================================== --- */
+/* ==========================================
+   ESTILOS PARA LA SECCIÓN DE RESULTados
+   ================================---------- */
+.vitrine-section {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.vitrine-section .section-header {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.vitrine-section .section-header h2 {
+    color: #ffffff;
+    font-size: clamp(2rem, 2.5vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.vitrine-section .section-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+/* Cuadrícula responsiva */
+.vitrine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* Tarjeta individual */
+.vitrine-card {
+    background-color: #141418;
+    border: 1px solid #2a2a35;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vitrine-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Imagen superior con efecto zoom al hacer hover */
+.vitrine-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.vitrine-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Contenedor del título */
+.vitrine-card > div {
+    padding: 25px 25px 10px 25px;
+    flex-grow: 1;
+}
+
+.vitrine-card h3 {
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Enlace "Ver Prototipo" */
+.vitrine-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0 25px 25px 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.vitrine-link:hover {
+    color: #38bdf8;
+}
+
+.vitrine-link i {
+    transition: transform 0.3s ease;
+}
+
+.vitrine-link:hover i {
+    transform: translateX(4px); /* Pequeño movimiento sutil en la flecha */
+}
+
+/* --- Estilos de la Sección de Confianza (Parte 5) --- */
+.trust-section {
+    background-color: var(--bg-section-2); /* Tono 3 de elevación (#0E1736) */
+    padding: 7rem 2rem;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+/* Ventana de código simulada (Gráfico abstracto técnico) */
+.code-window {
+    background-color: var(--bg-base);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.window-header {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.red { background-color: #ef4444; }
+.dot.yellow { background-color: #f59e0b; }
+.dot.green { background-color: var(--neon-green); }
+
+.window-title {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+.window-body {
+    padding: 1.5rem;
+    font-family: monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.window-body code {
+    display: block;
+    color: var(--text-main);
+}
+
+.keyword { color: #3b82f6; }
+.boolean { color: #f59e0b; }
+.string { color: var(--neon-green); }
+
+/* Contenido del manifiesto */
+.trust-content h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.trust-content > p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.trust-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.trust-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.trust-list li i {
+    color: var(--neon-green);
+    margin-top: 0.25rem;
+}
+
+.trust-list li strong {
+    color: var(--text-main);
+}
+
+/* --- Estilos de la Sección de FAQs (Parte 6) --- */
+.faqs-section {
+    background-color: var(--bg-base); /* Tono 1 base (#030712) */
+    padding: 7rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--bg-card); /* Tono 4 para tarjetas (#15224A) */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.25s ease;
+}
+
+.faq-item[open] {
+    border-color: var(--bg-highlight);
+}
+
+.faq-item summary {
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-main);
+}
+
+/* Ocultar la flecha por defecto en algunos navegadores */
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: '+';
+    color: var(--neon-green);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.faq-item[open] summary::after {
+    content: '-';
+}
+
+.faq-item p {
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+}
+
+/* --- Estilos del Footer (Parte 7) --- */
+.footer-section {
+    background-color: var(--bg-footer); /* Negro puro exclusivo #000000 */
+    color: var(--text-muted);
+    padding: 5rem 2rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+.footer-logo {
+    width: 40px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 400 !important;
+    max-width: 300px;
+    line-height: 1.5;
+}
+
+.footer-links h4, .footer-contact h4 {
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-links ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--neon-green);
+}
+
+.footer-contact p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* --- Navegación del Header --- */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--neon-green);
+}
+
+/* Ocultar links en pantallas muy pequeñas si prefieres, o mantenerlos compactos */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Simplifica la vista móvil por ahora */
+    }
+}
+
+/* --- Botón Flotante de Chatbot --- */
+.chat-widget-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+}
+
+.chat-float-btn {
+    background-color: var(--bg-card);
+    color: var(--neon-green);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    cursor: pointer;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.chat-float-btn:hover {
+    background-color: var(--neon-green);
+    color: var(--bg-base);
+    transform: scale(1.08);
+    border-color: var(--neon-green);
+}
+
+/* Efecto de pulso sutil alrededor del botón */
+.chat-pulse {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    border: 1px solid var(--neon-green);
+    opacity: 0.4;
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.25);
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   WIDGET FLOTANTE DEL CHATBOT
+   ================================---------- */
+.chatbot-widget {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    font-family: inherit;
+}
+
+/* Botón flotante principal */
+.chat-toggle-btn {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.6);
+}
+
+/* Ventana de chat desplegable */
+.chat-window {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 320px;
+    background-color: #141418;
+    border: 1px solid #2a2a35;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    
+    /* Estado inicial oculto con animación */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.chat-window.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Cabecera del chat */
+.chat-header {
+    background-color: #1a1a22;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #2a2a35;
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #22c55e; /* Verde activo */
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+.chat-header h3 {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.chat-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.chat-close:hover {
+    color: #ffffff;
+}
+
+/* Cuerpo del chat */
+.chat-body {
+    padding: 20px;
+    flex-grow: 1;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.chat-message.bot {
+    background-color: #1f1f2a;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    border-top-left-radius: 2px;
+}
+
+/* Pie de página del chat (Botón de acción) */
+.chat-footer {
+    padding: 15px 20px;
+    background-color: #1a1a22;
+    border-top: 1px solid #2a2a35;
+}
+
+.chat-whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.chat-whatsapp-btn:hover {
+    background-color: #20ba5a;
+}

@@ -1,0 +1,36 @@
+:root {
+    /* --- Tono 1: Fondo general profundo (Aplica para Hero, Vitrina y FAQs) --- */
+    --bg-base: #030712;       
+
+    /* --- Tono 2: Primer nivel de elevación (Aplica para la Sección de Servicios / Carrusel) --- */
+    --bg-section-1: #080E21;  
+
+    /* --- Tono 3: Segundo nivel de elevación (Aplica para la Sección de Confianza / "Quiénes somos") --- */
+    --bg-section-2: #0E1736;  
+
+    /* --- Tono 4: Color para tarjetas, botones flotantes y contenedores internos --- */
+    --bg-card: #15224A;       
+
+    /* --- Tono 5: Color de acento para estados activos o bordes destacados --- */
+    --bg-highlight: #1D3066;  
+
+    /* --- Tono 6: Negro puro exclusivo (Aplica únicamente para el Footer de cierre) --- */
+    --bg-footer: #000000;     
+    
+    /* --- Extras de marca --- */
+    --neon-green: #10b981;    /* Verde neón tecnológico para acentos y CTAs */
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+}
+/* 2. El Reset CSS y corrección del modelo de caja */
+*, *::before, *::after {
+    box-sizing: border-box; /* Evita que los paddings rompan tus anchos */
+    margin: 0;
+    padding: 0;
+}
+
+/* 3. Ajustes globales del documento */
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave entre secciones */
+}
+

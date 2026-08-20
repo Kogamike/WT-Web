@@ -1,0 +1,231 @@
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const thumbItems = document.querySelectorAll('.thumb-item');
+
+    if (thumbItems.length <= 4) return;
+
+    // Ocultamos desde la 5ta en adelante
+    thumbItems.forEach((item, index) => {
+        if (index > 3) {
+            item.style.display = 'none';
+        }
+    });
+
+    // Cantidad oculta
+    const hiddenCount = thumbItems.length - 3;
+
+    // La 4ta (index 3)
+    const lastVisible = thumbItems[3];
+
+    // Creamos overlay
+    const overlay = document.createElement('div');
+    overlay.classList.add('thumb-overlay-plus');
+    overlay.innerHTML = `<span>+${hiddenCount}</span>`;
+
+    // Click abre lightbox
+    overlay.addEventListener('click', () => {
+        if (typeof openLightbox === 'function') {
+            openLightbox();
+        }
+    });
+
+    lastVisible.appendChild(overlay);
+
+});
+
+/* cambiar de imagen */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const mainImg = document.getElementById('current-main-img');
+    const thumbs = document.querySelectorAll('.thumb');
+
+    thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+
+            // Cambiar imagen principal
+            mainImg.style.opacity = 0;
+
+            setTimeout(() => {
+                mainImg.src = thumb.src;
+                mainImg.style.opacity = 1;
+            }, 150);
+
+            // Quitar active de todas
+            thumbs.forEach(t => t.classList.remove('active'));
+
+            // Activar la seleccionada
+            thumb.classList.add('active');
+        });
+    });
+
+});
+
+/* abr lightbox */
+
+window.openLightbox = function() {
+    const lightbox = document.getElementById('product-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const thumbsContainer = document.querySelector('.lightbox-thumbnails');
+
+    const thumbs = document.querySelectorAll('.thumb');
+
+    // Guardamos todas las imágenes
+    imagenes = Array.from(thumbs).map(img => img.src);
+
+    // Detectamos cuál está activa
+    const currentSrc = document.getElementById('current-main-img').src;
+    indexActual = imagenes.indexOf(currentSrc);
+
+    // Mostrar lightbox
+    lightbox.classList.add('active');
+
+    // Cargar imagen actual
+    lightboxImg.src = imagenes[indexActual];
+
+    // Renderizar miniaturas
+    renderLightboxThumbs();
+};
+
+/* miniaturas lightbox */
+
+function renderLightboxThumbs() {
+    const container = document.querySelector('.lightbox-thumbnails');
+    container.innerHTML = '';
+
+    imagenes.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.classList.add('lb-thumb');
+
+        if (i === indexActual) {
+            img.classList.add('active');
+        }
+
+        img.addEventListener('click', () => {
+            indexActual = i;
+        });
+
+        container.appendChild(img);
+    });
+}
+
+/*flechas */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const nextBtn = document.querySelector('.next-lb');
+    const prevBtn = document.querySelector('.prev-lb');
+
+    if (nextBtn && prevBtn) {
+
+        nextBtn.addEventListener('click', () => {
+            indexActual = (indexActual + 1) % imagenes.length;
+            actualizarLightbox();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            indexActual = (indexActual - 1 + imagenes.length) % imagenes.length;
+            actualizarLightbox();
+        });
+
+    }
+});
+
+/*cerrar lightbox*/ 
+
+/* --- Módulo Lightbox Protegido --- */
+const botonCerrarLightbox = document.querySelector('.close-lightbox');
+
+// Solo si el botón existe en el HTML de esta página...
+if (botonCerrarLightbox) {
+    botonCerrarLightbox.addEventListener('click', () => {
+        const lightbox = document.getElementById('product-lightbox');
+        // Usamos el signo '?' para que si el lightbox no existe, no explote
+        lightbox?.classList.remove('active');
+        console.log("Lightbox cerrado con éxito");
+    });
+}
+
+/* zoom lightbox */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    if (!lightboxImg) return;
+
+    let zoomActivo = false;
+
+    lightboxImg.addEventListener('click', (e) => {
+        zoomActivo = !zoomActivo;
+
+        if (zoomActivo) {
+            lightboxImg.classList.add('zoomed');
+        } else {
+            lightboxImg.classList.remove('zoomed');
+            lightboxImg.style.transform = 'scale(1)';
+        }
+    });
+
+    // Movimiento del mouse (solo si está en zoom)
+    lightboxImg.addEventListener('mousemove', (e) => {
+        if (!zoomActivo) return;
+
+        const rect = lightboxImg.getBoundingClientRect();
+
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+
+        lightboxImg.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+    });
+});
+
+// 1. DECLARACIÓN GLOBAL (Fundamental)
+let imagenes = [];
+let indexActual = 0;
+
+// 2. FUNCIÓN DE ACTUALIZACIÓN (La que te faltaba)
+function actualizarLightbox() {
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (lightboxImg && imagenes[indexActual]) {
+        lightboxImg.src = imagenes[indexActual];
+        renderLightboxThumbs(); 
+    }
+}
+
+/* --- Tu openLightbox mejorado --- */
+window.openLightbox = function() {
+    const lightbox = document.getElementById('product-lightbox');
+    const thumbs = document.querySelectorAll('.thumb');
+
+    imagenes = Array.from(thumbs).map(img => img.src);
+    const currentSrc = document.getElementById('current-main-img').src;
+    indexActual = imagenes.indexOf(currentSrc);
+
+    if (indexActual === -1) indexActual = 0;
+
+    lightbox.classList.add('active');
+    actualizarLightbox(); // Centralizamos aquí
+};
+
+/* --- Tu renderLightboxThumbs corregido --- */
+function renderLightboxThumbs() {
+    const container = document.querySelector('.lightbox-thumbnails');
+    if (!container) return;
+    container.innerHTML = '';
+
+    imagenes.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.classList.add('lb-thumb');
+
+        if (i === indexActual) img.classList.add('active');
+
+        img.addEventListener('click', () => {
+            indexActual = i;
+            actualizarLightbox(); // 🔥 Ahora sí cambia la imagen al hacer clic
+        });
+
+        container.appendChild(img);
+    });
+}
